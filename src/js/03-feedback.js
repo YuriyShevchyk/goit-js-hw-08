@@ -1,4 +1,4 @@
-import throttle from 'lodash.throttle';
+import throttle from "lodash.throttle";
 
 const refs = {
     form: document.querySelector('.feedback-form'),
@@ -14,7 +14,7 @@ processingTheForm();
 
 
 const formData = {email:"", name:""};
-// let formData = {};
+
 
 function onFormSubmit(evt) {
   evt.preventDefault();
