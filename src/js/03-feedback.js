@@ -37,9 +37,9 @@ function processingTheForm() {
    
   if (objectValues) {
     const saveEmail = objectValues.email;
-    refs.email.value = saveEmail;
+      refs.email.value = saveEmail ||``;
     const saveMessage = objectValues.message;
-    refs.message.value = saveMessage;
+    refs.message.value = saveMessage ||``;
    
   };
 };
