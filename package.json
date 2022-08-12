@@ -29,6 +29,6 @@
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4"
-  },
+  }
   // "homepage": "https://YuriyShevchyk.github.io/goit-js-hw-08/"
 }
