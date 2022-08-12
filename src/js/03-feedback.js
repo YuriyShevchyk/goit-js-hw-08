@@ -1,45 +1,50 @@
-import throttle from "lodash.throttle";
+import throttle from 'lodash.throttle';
 
-const refs = {
-    form: document.querySelector('.feedback-form'),
-    email: document.querySelector('input'),
-    message: document.querySelector('textarea'),
-};
+const form = document.querySelector('.feedback-form')
+const inputRef = document.querySelector('input');
+const textareaRef =document.querySelector('textarea');
 
-refs.form.addEventListener('submit', onFormSubmit);
-refs.email.addEventListener('input', throttle(onFormInput, 500));
-refs.message.addEventListener('input', throttle(onFormInput, 500));
-const Storage_KEY = "feedback-form-state";
+
+const STORAGE_KEY = "feedback-form-state";
+
+
+inputRef.addEventListener('input', throttle(onInputChange, 500))
+textareaRef.addEventListener('input', throttle(onInputChange, 500))
+
 
 updateInput();
 
-
-
-function onFormSubmit(evt) {
-  evt.preventDefault();
-const formData = new FormData(refs.form);
+form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    const formData = new FormData(form);
     formData.forEach((name, value) => {
         console.log(name, value);
     })          
 
-    refs.form.reset(); 
-    localStorage.removeItem(Storage_KEY);   
-  
-};
+    form.reset(); 
+    localStorage.removeItem(STORAGE_KEY);   
+});
 
-function onFormInput(evt) {
-  formData[evt.target.name] = evt.target.value;
-  localStorage.setItem(Storage_KEY, JSON.stringify(formData));
-};
-        
+
+function onInputChange (evt) {    
+ const email = inputRef.value;
+ const message = textareaRef.value;
+ const formData = {
+    email,
+    message,
+ };
+ localStorage.setItem(STORAGE_KEY, JSON.stringify(formData))
+ }; 
+
+
 function updateInput() {
-    let inputListSaved = localStorage.getItem(Storage_KEY);
+    let inputListSaved = localStorage.getItem(STORAGE_KEY);
     inputListSaved= JSON.parse(inputListSaved);
 
       if(inputListSaved){
       
-      refs.email.value = inputListSaved.email;
-      refs.message.value = inputListSaved.message;
+      inputRef.value = inputListSaved.email;
+      textareaRef.value = inputListSaved.message;
     
     };
 };
