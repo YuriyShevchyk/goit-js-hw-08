@@ -14,6 +14,7 @@ textareaRef.addEventListener('input', throttle(onInputChange, 500))
 
 updateInput();
 
+
 form.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const formData = new FormData(form);
