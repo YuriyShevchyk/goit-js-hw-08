@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://YuriyShevchyk.github.io/goit-js-hw-08/",
   "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /goit-js-hw-08/"
@@ -29,5 +30,5 @@
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4"
   },
-  "homepage": "https://YuriyShevchyk.github.io/goit-js-hw-08/"
+  // "homepage": "https://YuriyShevchyk.github.io/goit-js-hw-08/"
 }
