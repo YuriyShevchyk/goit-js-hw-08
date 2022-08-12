@@ -1,5 +1,5 @@
 {
-  "name": "js_hm_8",
+  "name": "goit-js-hw-08",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -29,5 +29,5 @@
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4"
   },
-  "homepage": "https://github.com/YuriyShevchyk/goit-js-hw-08"
+  "homepage": "https://YuriyShevchyk.github.io/goit-js-hw-08"
 }
