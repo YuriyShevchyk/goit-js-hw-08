@@ -7,39 +7,39 @@ const refs = {
 };
 
 refs.form.addEventListener('submit', onFormSubmit);
-refs.form.addEventListener('input', throttle(onFormInput, 500));
-const STORAGE_KEY = "feedback-form-state";
+refs.email.addEventListener('input', throttle(onFormInput, 500));
+refs.message.addEventListener('input', throttle(onFormInput, 500));
+const Storage_KEY = "feedback-form-state";
 
-processingTheForm();
+updateInput();
 
-
-const formData = {email:"", name:""};
 
 
 function onFormSubmit(evt) {
   evt.preventDefault();
-  evt.currentTarget.reset();
-  formData.email = refs.email.value;
-  formData.message = refs.message.value;
-  console.log(formData);
-  localStorage.removeItem(STORAGE_KEY);
+const formData = new FormData(refs.form);
+    formData.forEach((name, value) => {
+        console.log(name, value);
+    })          
+
+    refs.form.reset(); 
+    localStorage.removeItem(Storage_KEY);   
   
 };
 
 function onFormInput(evt) {
   formData[evt.target.name] = evt.target.value;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+  localStorage.setItem(Storage_KEY, JSON.stringify(formData));
 };
         
-function processingTheForm() {
-  const formValues = localStorage.getItem(STORAGE_KEY);
-  const objectValues = JSON.parse(formValues);
-   
-  if (objectValues) {
-    const saveEmail = objectValues.email;
-      refs.email.value = saveEmail ||``;
-    const saveMessage = objectValues.message;
-    refs.message.value = saveMessage ||``;
-   
-  };
+function updateInput() {
+    let inputListSaved = localStorage.getItem(Storage_KEY);
+    inputListSaved= JSON.parse(inputListSaved);
+
+      if(inputListSaved){
+      
+      refs.email.value = inputListSaved.email;
+      refs.message.value = inputListSaved.message;
+    
+    };
 };
