@@ -39,8 +39,7 @@ function onInputChange (evt) {
 
 
 function updateInput() {
-    let inputListSaved = localStorage.getItem(STORAGE_KEY);
-    inputListSaved= JSON.parse(inputListSaved);
+    const inputListSaved = JSON.parse.localStorage.getItem(STORAGE_KEY);
 
       if(inputListSaved){
       
